@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    {{ title }}
+
+{% endblock %}
+
+{% block content_title %}
+
+    <main class="container mt-3">
+    <!-- HERO -->
+    <section class="jumbotron jumbo_background text-center mt-4">
+        <h1 class="display-4">Всякие туры</h1>
+        <p class="lead">{{ subtitle }}</p>
+        <p class="mt-5 w-50 mx-auto">{{ description }}</p>
+    </section>
+{% endblock %}
+
+{% block content %}
+
+    <!-- CARDS -->
+    <div class="row mt-5">
+        {% for i in range(7, 13) %}
+            <div class="col-4">
+                <div class="card mb-4">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <img class="card-img-top embed-responsive-item" src="{{ tours[i]['picture'] }}" alt=""/>
+                    </div>
+                    <div class="card-body">
+                        <h2 class="h5 card-title">{{ tours[i]['country'] }}:<br>{{ tours[i]['title'] }}</h2>
+                        <p class="card-text">{{ tours[i]['description'] | truncate(70) }}</p>
+                        <div class="card-footer">
+                                {{ tours[i]['date'] }},
+                                {{ tours[i]['nights'] }} дней,
+                                {{ tours[i]['price'] }} Р,&nbsp;&nbsp;&nbsp;{{ tours[i]['stars'] }}
+                            <i class="fa fa-star gold" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    </main>
+{% endblock %}

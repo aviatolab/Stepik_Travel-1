@@ -1,0 +1,20 @@
+.jumbo_background {
+    background-image: url("../../static/images/jambo.jpg");
+    background-repeat: no-repeat;
+}
+
+.c-right {
+    display: block;
+    float: right;
+    background-color: crimson;
+}
+.c-left {
+    display: block;
+    float: left;
+}
+.gold {
+    color: gold;
+}
+.foo {
+    margin-top: 6px;
+}

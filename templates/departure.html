@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    {{ title }}
+
+{% endblock %}
+
+{% block content_title %}
+
+    <main class="container mt-3">
+    <h1 class="display-4">Летим из {{ departures }}</h1>
+    <h3 class="lead">Найдено туров: {{ cnt }}, от {{ ot }} до {{ do }} и от {{ n_min }} ночей до {{ n_max }} ночей </h3>
+
+    </section>
+{% endblock %}
+
+{% block content %}
+
+    <!-- CARDS -->
+    <div class="row mt-5">
+        {% for i in range(1, len + 1) %}
+            {% if tours[i]['departure'] == dep %}
+                <div class="col-4">
+                    <div class="card mb-4">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <img class="card-img-top embed-responsive-item" src="{{ tours[i]['picture'] }}" alt=""/>
+                        </div>
+                        <div class="card-body">
+                            <h2 class="h5 card-title">{{ tours[i]['country'] }}:<br>{{ tours[i]['title'] }}</h2>
+                            <p class="card-text">{{ tours[i]['description'] | truncate(70) }}</p>
+                            <div class="card-footer">
+                                {{ tours[i]['date'] }},
+                                {{ tours[i]['nights'] }} дней,
+                                {{ tours[i]['price'] }} Р,&nbsp;&nbsp;&nbsp;{{ tours[i]['stars'] }}
+                                <i class="fa fa-star gold" aria-hidden="true"></i>
+                            </div>
+                            <a href="{{ url_for('tours', tour=tours[i]['title']) }}" class="btn btn-sm btn-primary foo">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    </main>
+{% endblock %}
